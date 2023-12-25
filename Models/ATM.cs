@@ -1,109 +1,124 @@
-// namespace SimpleATM_App.Model;
-
-// public class ATM
-// {
-//     private List<Card> Cards { get; set; } = [];
-//     private Card? CurrentCard;
-
-//     public ATM(List<Card> Cards)
-//     {
-//         this.Cards.AddRange(Cards);
-//     }
-
-
-//     public bool IsValidCardNumber(string cardNumber)
-//     {
-//         var matchingCard = Cards.SingleOrDefault(c => c.CardNumber == cardNumber);
-//         if (matchingCard is null)
-//         {
-//             return false;
-//         }
-
-//         CurrentCard = matchingCard;
-//         return true;
-//     }
-
-//     public bool IsValidPinNumber(string pinNumber)
-//     {
-//         var matchPin = Cards.SingleOrDefault(x => x.Pin == pinNumber);
-//         if (matchPin is null)
-//         {
-//             return false;
-//         }
-
-//         CurrentCard = matchPin;
-//         return true;
-//     }
-// }
+using System.IO.Compression;
 
 namespace SimpleATM_App.Model;
 
-public class Atm
+public class ATM
 {
-    public Atm(List<Card> cards)
+    private List<Card> Cards { get; set; } = [];
+    private Card? CurrentCard;
+
+    public ATM(List<Card> Cards)
     {
-        this.cards.AddRange(cards);
+        this.Cards.AddRange(Cards);
     }
 
-    private List<Card> cards { get; set; } = [];
-    private Card? currentCard;
 
     public bool IsValidCardNumber(string cardNumber)
     {
-        var matchingCard = cards.SingleOrDefault(c => c.CardNumber == cardNumber);
+        var matchingCard = Cards.SingleOrDefault(c => c.CardNumber == cardNumber);
         if (matchingCard is null)
         {
             return false;
         }
 
-        currentCard = matchingCard;
+        CurrentCard = matchingCard;
         return true;
     }
 
-    public bool IsValidPin(string pin)
+    public bool IsValidPinNumber(string pinNumber)
     {
-        if (currentCard is null)
+        var matchPin = Cards.SingleOrDefault(x => x.Pin == pinNumber);
+        if (matchPin is null)
         {
-            throw new Exception("Card does not exist");
+            return false;
         }
 
-        return currentCard.Pin == pin;
+        CurrentCard = matchPin;
+        return true;
     }
 
     public decimal GetBalance()
     {
-        if (currentCard is null)
+        if (CurrentCard is null)
         {
             throw new Exception("Card does not exist");
         }
-
-        return currentCard.Balance;
+        return CurrentCard.Balance;
     }
 
-    public decimal Widthraw(decimal amount)
+    public decimal Withdraw(int amount)
     {
-        if (currentCard is null)
+        if (CurrentCard is null)
         {
             throw new Exception("Card does not exist");
         }
 
-        if (amount <= 0)
+        if (CurrentCard.Balance <= 0)
         {
             return 0;
         }
 
-        if (currentCard.Balance < amount)
+        if (CurrentCard.Balance < amount)
         {
             return 0;
+
+        }
+        CurrentCard.Balance -= amount;
+        CurrentCard.Transactions.Add(
+            new Transaction
+            {
+                TransactionDate = DateTime.Now,
+                Amount = amount,
+                Type = "Withdraw"
+            }
+        );
+
+        return CurrentCard.Balance;
+    }
+
+    public decimal Deposit(int amount)
+    {
+        if (CurrentCard is null)
+        {
+            throw new Exception("Card does not exist");
         }
 
-        currentCard.Balance -= amount;
-        currentCard.Transactions.Add(new Transaction
-        {
-            TransactionDate = DateTime.Now,
-            Amount = amount,
-        });
+        CurrentCard.Balance += amount;
+        CurrentCard.Transactions.Add(
+            new Transaction
+            {
+                TransactionDate = DateTime.Now,
+                Amount = amount,
+                Type = "Deposit"
+            }
+        );
 
-        return currentCard.Balance;
+        return CurrentCard.Balance;
+    }
+
+    public List<Transaction> LastFiveTransaction()
+    {
+        if (CurrentCard is null)
+        {
+            throw new Exception("Card does not exist");
+        }
+        return CurrentCard.Transactions.Take(5).ToList();
+    }
+
+    public bool ChangePinNumber(string newPin)
+    {
+        if (CurrentCard is null)
+        {
+            throw new Exception("Card does not exist");
+        }
+        if (CurrentCard.Pin == newPin)
+        {
+            return false;
+        }
+        else
+        {
+            CurrentCard.Pin = newPin;
+            return true;
+        }
     }
 }
