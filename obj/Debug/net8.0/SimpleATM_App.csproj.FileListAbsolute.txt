@@ -1,0 +1,14 @@
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\bin\Debug\net8.0\SimpleATM_App.exe
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\bin\Debug\net8.0\SimpleATM_App.deps.json
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\bin\Debug\net8.0\SimpleATM_App.runtimeconfig.json
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\bin\Debug\net8.0\SimpleATM_App.dll
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\bin\Debug\net8.0\SimpleATM_App.pdb
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.AssemblyInfoInputs.cache
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.AssemblyInfo.cs
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.csproj.CoreCompileInputs.cache
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.dll
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\refint\SimpleATM_App.dll
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.pdb
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\SimpleATM_App.genruntimeconfig.cache
+C:\Users\tungb\Desktop\CsharpProjects\project\SimpleATM_App\obj\Debug\net8.0\ref\SimpleATM_App.dll
