@@ -8,10 +8,19 @@ new Card{CardNumber = "	6271701225979642", Pin = "4444", Balance = 500},
 new Card{CardNumber = "	5425233430109903", Pin = "5555", Balance = 500},
 ]);
 
-Console.WriteLine("Enter your card number: ");
+// Console.WriteLine("Enter your card number: ");
+// var cardNumber = Console.ReadLine();
+// if (atm.IsValidCardNumber(cardNumber!) == false)
+// {
+//     System.Console.WriteLine("Card does not exit");
+//     return;
+// }
+
+System.Console.Write("Enter your card number: ");
 var cardNumber = Console.ReadLine();
+
 if (atm.IsValidCardNumber(cardNumber!) == false)
 {
-    Console.WriteLine("Card does not exit");
+    System.Console.WriteLine("Card does not exist. Exit!");
     return;
 }

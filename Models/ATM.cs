@@ -12,11 +12,12 @@ public class ATM
 
     public bool IsValidCardNumber(string cardNumber)
     {
-        var matchingCard = Cards.FirstOrDefault(x => x.CardNumber == cardNumber);
-        if (cardNumber is null)
+        var matchingCard = Cards.SingleOrDefault(x => x.CardNumber == cardNumber);
+        if (matchingCard is null)
         {
             return false;
         }
+
         CurrentCard = matchingCard;
         return true;
     }
